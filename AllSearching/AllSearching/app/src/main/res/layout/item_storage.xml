@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.woojoo.allsearching.domain.entites.Researching" />
+
+        <variable
+            name="callback"
+            type="com.woojoo.allsearching.ui.adapter.StorageAdapter.DeleteLocalItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/item_container"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:background="@drawable/bg_faf6ff_radius_16">
+
+            <ImageView
+                android:id="@+id/imageView_thumnail"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/default_image"/>
+
+            <TextView
+                android:id="@+id/textView_itemType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.title}"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="8dp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toBottomOf="@id/imageView_thumnail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_delete"
+                tools:text="1"/>
+
+            <ImageView
+                android:id="@+id/imageView_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_delete_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClickListener="@{() -> callback.deleteLocalItem(item)}" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView_delete"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_baseline_delete_24"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent" />-->
+<!--            -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

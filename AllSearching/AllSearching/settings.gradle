@@ -1,0 +1,2 @@
+rootProject.name = "AllSearching"
+include ':app', ':data', ':domain'

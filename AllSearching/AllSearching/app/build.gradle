@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android.extensions'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.woojoo.allsearching"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSDK
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation project(':data')
+    implementation project(':domain')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$androidxCoreVersion"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompatVersion"
+    implementation "com.google.android.material:material:$androidMeterialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion"
+    implementation "androidx.activity:activity-ktx:$activityVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
+
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    kapt "com.google.dagger:dagger-android-processor:$hiltVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$hiltVersion"
+
+    // coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion"
+    implementation "com.google.dagger:hilt-android:$androidDaggerVersion-alpha"
+
+    // Jetpack - paging
+    implementation "androidx.paging:paging-runtime-ktx:$androidxPagingVersion"
+
+}
